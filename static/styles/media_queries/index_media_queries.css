@@ -1,0 +1,48 @@
+/* ----- 01 TYPOGRAPHY
+FONT-SIZE SYSTEM : 10px 12px 14px 16px 18px 20px 24px 30px 36px 44px 
+                   52px 62px 74px 86px 98px 
+
+SPACING-SIZE SYSTEM : 2px 4px 8px 12px 16px 24px 32px 48px 64px 80px 
+                      90px 128px  */
+
+/* ***************** */
+/* Below 1299px (Small desktop)   */
+/* ***************** */
+
+@media (max-width: 82em) {
+  .content-header {
+    font-size: 3rem;
+  }
+
+  .content-text {
+    font-size: 1.2rem;
+    margin-bottom: 3.2rem;
+  }
+
+  .btn {
+    font-size: 1.4rem;
+  }
+
+  .btn img {
+    max-width: 2rem;
+    max-height: 2rem;
+  }
+}
+
+/* ***************** */
+/* Below 1091px (Small desktop)   */
+/* ***************** */
+
+@media (max-width: 69em) {
+  .content-block {
+    margin: 4rem 9rem;
+  }
+
+  .content-detail {
+    padding: 2.4rem 4.8rem;
+  }
+
+  .content-text {
+    margin-bottom: 2.4rem;
+  }
+}

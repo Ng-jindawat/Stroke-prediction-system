@@ -1,0 +1,211 @@
+{%extends 'base.html'%} {%block header%}
+<link
+  rel="stylesheet"
+  href="{{url_for('static',filename='styles/form.css')
+}}"
+  type="text/css"
+/>
+<link
+  rel="stylesheet"
+  href="{{url_for('static',filename='styles/media_queries/form_media_queries.css')
+}}"
+  type="text/css"
+/>
+<script src="{{url_for('static',filename='js/form.js')}}"></script>
+<title>Stroke-Prediction | กรอกข้อมูลสำหรับการทำนาย</title>{%endblock%}{%block
+contents%}
+
+<div class="contents">
+  <section class="image-section">
+    <div class="image-text">
+      <h1>กรุณากรอกข้อมูลเพื่อทำนายผล</h1>
+      <p>
+        การทำนายความเสี่ยงต่อการเกิดโรคหลอดเลือดสมองจำเป็นต้องกรอกข้อมูลที่เกี่ยวข้อง
+      </p>
+    </div>
+    <img
+      class="main-image"
+      src="/static/images/form_page/medicine.svg"
+      alt="รูปภาพหน้ากรอกข้อมูลสำหรับทำนายผลความเสี่ยงโรคหลอดเลือดสมอง"
+    />
+  </section>
+
+  <section class="input-section">
+    <form
+      action="{{ url_for('get_Predict')}}"
+      method="POST"
+      class="form form-input-part"
+    >
+      <div class="mg-bottom heart-disease-status">
+        <p class="input-title">สถานะโรคหัวใจ</p>
+        <div class="selection-box">
+          <select
+            id="heart_disease"
+            class="set-width"
+            name="heart_disease"
+            required
+          >
+            <option selected disabled hidden value="">กรุณาเลือก</option>
+            <option value="1">เป็นโรคหัวใจ</option>
+            <option value="0">ไม่เป็นโรคหัวใจ</option>
+          </select>
+          <div class="custom-arrow">
+            <img
+              src="/static/icons/fome_page/caret-down-fill.svg"
+              alt="ไอคอนสำหรับปุ่มเลือกรายการโรคหัวใจ"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="mg-bottom hypertension-status">
+        <p class="input-title">สถานะโรคความดันโลหิตสูง</p>
+        <div class="selection-box">
+          <select
+            id="hypertension"
+            class="set-width"
+            name="hypertension"
+            required
+          >
+            <option selected disabled hidden value="">กรุณาเลือก</option>
+            <option value="1">เป็นโรคความดันโลหิตสูง</option>
+            <option value="0">ไม่เป็นโรคความดันโลหิตสูง</option>
+          </select>
+          <div class="custom-arrow">
+            <img
+              src="/static/icons/fome_page/caret-down-fill.svg"
+              alt="ไอคอนสำหรับปุ่มเลือกรายการโรคหลอดเลือดสมอง"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="mg-bottom ever-married-status">
+        <p class="input-title">สถานะการแต่งงาน</p>
+        <div class="selection-box">
+          <select
+            id="ever_married"
+            class="set-width"
+            name="ever_married"
+            required
+          >
+            <option selected disabled hidden value="">กรุณาเลือก</option>
+            <option value="0">เคยแต่งงานแล้ว</option>
+            <option value="1">ยังไม่เคยแต่งงาน</option>
+          </select>
+          <div class="custom-arrow">
+            <img
+              src="/static/icons/fome_page/caret-down-fill.svg"
+              alt="ไอคอนสำหรับปุ่มเลือกรายการการแต่งงาน"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="mg-bottom work-type-status">
+        <p class="input-title">อาชีพ</p>
+        <div class="selection-box">
+          <select id="work_type" class="set-width" name="work_type" required>
+            <option selected disabled hidden value="">กรุณาเลือก</option>
+            <option value="0">อาชีพข้าราชการ</option>
+            <option value="1">อาชีพลูกจ้าง</option>
+            <option value="2">อาชีพอิสระ</option>
+            <option value="3">นักเรียน/นักศึกษา</option>
+            <option value="4">ว่างงาน</option>
+          </select>
+          <div class="custom-arrow">
+            <img
+              src="/static/icons/fome_page/caret-down-fill.svg"
+              alt="ไอคอนสำหรับปุ่มเลือกรายการอาชีพ"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="mg-bottom smoking-status">
+        <p class="input-title">สถานะการสูบบุหรี่</p>
+        <div class="selection-box">
+          <select
+            id="smoking_status"
+            class="set-width"
+            name="smoking_status"
+            required
+          >
+            <option selected disabled hidden value="">กรุณาเลือก</option>
+            <option value="0">สูบบุหรี่</option>
+            <option value="1">ไม่สูบบุหรี่</option>
+            <option value="2">เคยสูบบุหรี่</option>
+          </select>
+          <div class="custom-arrow">
+            <img
+              src="/static/icons/fome_page/caret-down-fill.svg"
+              alt="ไอคอนสำหรับปุ่มเลือกรายการการสูบบุหรี่"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="mg-bottom age-input">
+        <label class="input-title" for="age">อายุ</label>
+        <input
+          alt="ช่องป้อนอายุสำหรับทำนายความเสี่ยงโรคหลอดเลือดสมอง"
+          class="box-styles set-width"
+          type="number"
+          min="0.01"
+          id="age"
+          name="age"
+          required="required"
+          step="0.01"
+        />
+      </div>
+
+      <div class="mg-bottom weight-input">
+        <label class="input-title" for="weight">น้ำหนัก (กก.)</label>
+        <input
+          class="box-styles set-width"
+          type="number"
+          min="0.01"
+          id="weight"
+          name="weight"
+          required="required"
+          step="0.01"
+        />
+      </div>
+
+      <div class="mg-bottom height-input">
+        <label class="input-title" for="height">ส่วนสูง (ซม.)</label>
+        <input
+          class="box-styles set-width"
+          type="number"
+          min="0.01"
+          id="height"
+          name="height"
+          required="required"
+          step="0.01"
+        />
+      </div>
+
+      <div class="mg-bottom avg-glucose-input">
+        <label class="input-title" for="glucose">ค่าเฉลี่ยน้ำตาลในเลือด</label>
+        <input
+          class="box-styles set-width"
+          type="number"
+          min="0.01"
+          id="glucose"
+          name="glucose"
+          required="required"
+          step="0.01"
+        />
+      </div>
+
+      <button class="btn-predict" type="submit">
+        เริ่มทำนาย
+        <img
+          src="/static/icons/fome_page/caret-circle-right-fill.svg"
+          alt="ไอคอนสำหรับปุ่มทำนายความเสี่ยงโรคหลอดเลือดสมอง"
+        />
+      </button>
+    </form>
+  </section>
+</div>
+{%endblock%}

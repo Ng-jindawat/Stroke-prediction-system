@@ -1,0 +1,62 @@
+/* ----- 01 TYPOGRAPHY
+FONT-SIZE SYSTEM : 10px 12px 14px 16px 18px 20px 24px 30px 36px 44px 
+                   52px 62px 74px 86px 98px 
+
+SPACING-SIZE SYSTEM : 2px 4px 8px 12px 16px 24px 32px 48px 64px 80px 
+                      90px 128px  */
+
+/* ***************** */
+/* Below 1487px (Small desktop)   */
+/* ***************** */
+
+@media (max-width: 93em) {
+  .result {
+    grid-template-columns: 3fr 1fr;
+  }
+
+  .info-user-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 2.4rem;
+  }
+
+  .img-user {
+    position: absolute;
+    max-width: 45%;
+    bottom: 0;
+    right: -5%;
+  }
+}
+
+/* ***************** */
+/* Below 1173px (Small desktop)   */
+/* ***************** */
+
+@media (max-width: 74em) {
+  .result {
+    grid-template-columns: 3fr 1fr;
+  }
+
+  .info-user-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 2.4rem;
+  }
+
+  .img-user {
+    position: absolute;
+    max-width: 45%;
+    bottom: 0;
+    right: -5%;
+  }
+}
+
+/* ***************** */
+/* Below 1091px (Small desktop)   */
+/* ***************** */
+
+@media (max-width: 69em) {
+  .contents-predicted {
+    margin: 0 9rem;
+  }
+}

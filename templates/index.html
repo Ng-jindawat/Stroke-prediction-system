@@ -1,0 +1,39 @@
+{%extends 'base.html'%} {%block header%}
+<link
+  rel="stylesheet"
+  href="{{url_for('static',filename='styles/index.css')
+}}"
+  type="text/css"
+/>
+<link
+  rel="stylesheet"
+  href="{{url_for('static',filename='styles/media_queries/index_media_queries.css')
+}}"
+  type="text/css"
+/>
+<title>Stroke-Prediction | ระบบทำนายความเสี่ยงต่อการเกิดโรคหลอดเลือดสมอง</title
+>{%endblock%} {%block contents%}
+
+<div class="content">
+  <div class="content-block">
+    <section class="content-img"></section>
+    <figure class="content-detail">
+      <span>HEALTH</span>
+      <h1 class="content-header">
+        ระบบทำนายความเสี่ยงต่อการเกิดโรคหลอดเลือดสมอง
+      </h1>
+      <p class="content-text">
+        สามารถดำเนินการทำนายความเสี่ยงโดยกดปุ่มด้านล่างเพื่อเข้าสู่ระบบการทำนาย
+      </p>
+      <a class="btn" href="{{url_for('get_form')}}">
+        ระบบการทำนาย
+        <img
+          src="/static/icons/fome_page/caret-circle-right-fill.svg"
+          alt="ปุ่มสำหรับไปสู่หน้ากรอกข้อมูลสำหรับทำนายผล"
+        />
+      </a>
+    </figure>
+  </div>
+</div>
+
+{%endblock%}

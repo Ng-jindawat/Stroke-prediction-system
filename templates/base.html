@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=TIS-620">
+    <meta name="keyword" content="stroke, prediction, web-application, website, stroke-prediction-system">
+    <meta name="description" content="this web applicatio is about stroke prediction system">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='styles/base.css')
+  }}"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='styles/media_queries/base_media_queries.css')
+  }}"
+      type="text/css"
+    />
+    <link rel="icon" href="/static/icons/base/icon-tab.png" />
+    {% block header %} {% endblock %}
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="main-header">
+        <a class="logos" href="{{url_for('get_index')}}">
+          <div class="logo">
+            <img class="icon-logo" src="/static/icons/base/logo_icon.svg" alt="logo-stroke-prediction-system" />
+            <img class="text-logo" src="/static/icons/base/logo_text.svg" alt="logo-text-stroke-prediction-system" />
+          </div>
+        </a>
+        <nav>
+          <ul class="main-nav">
+            <li>
+              <a class="main-link" href="{{url_for('get_index')}}">หน้าหลัก</a>
+            </li>
+            <li>
+              <a class="main-link" href="{{url_for('get_form')}}">การทำนาย</a>
+            </li>
+            <li>
+              <a class="main-link" href="{{url_for('get_about_knowledge')}}"
+                >ความรู้เกี่ยวกับโรค</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <!--  -->
+      <main>
+        {% block contents %}{% endblock %}
+      </main>
+      <!--  -->
+      <footer class="footer-section">
+        <div class="footer-col-1">
+          <a class="footer-logos" href="{{url_for('get_index')}}">
+            <figure class="footer-logo">
+              <img
+              class="footer-logo-icon"
+              src="/static/icons/base/logo_icon.svg"
+              alt="footer-logo-stroke-prediction-system"
+              />
+              <img
+              class="footer-logo-text"
+              src="/static/icons/base/logo_text.svg"
+              alt="footer-text-logo-stroke-prediction-system"
+              />
+            </figure>
+          </a>
+          <p>ระบบทำนายความเสี่ยงต่อการเกิดโรคหลอดเลือดสมอง</p>
+        </div>
+        <div class="footer-col-2">
+          <h2 class="footer-header">การบริการ</h2>
+          <ul class="footer-service">
+            <li>ระบบทำนายความเสี่ยง</li>
+            <li>ระบบการให้คำแนะนำ</li>
+            <li>ระบบการให้ความรู้</li>
+          </ul>
+        </div>
+        <div class="footer-col-3">
+          <h2 class="footer-header">เกี่ยวกับ</h2>
+          <ul class="footer-links">
+            <li><a class="footer-link" href="{{url_for('get_index')}}">หน้าหลัก</a></li>
+            <li><a class="footer-link" href="{{url_for('get_form')}}">การทำนาย</a></li>
+            <li><a class="footer-link" href="{{url_for('get_about_knowledge')}}"
+              >ความรู้เกี่ยวกับโรค</a
+            ></li>
+          </ul>
+        </div>
+        <div class="footer-col-4">
+          <h2 class="footer-header">ช่องทางการติดต่อ</h2>
+          <figure class="footer-contact-logo">
+            <img src="/static/icons/base/logo-cs-kmitl.webp" alt="logo-cs-kmitl" />
+          </figure>
+          <address>
+            <p>King Mongkut's Institute of Technology Ladkrabang</p>
+            <p>สถาบันพระจอมเกล้าเจ้าคุณทหารลาดกระบัง (สจล.)</p>
+            <p>61050148@kmitl.ac.th, 61050149@kmitl.ac.th</p>
+          </address>
+        </div>
+      </footer>
+  </body>
+</html>

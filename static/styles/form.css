@@ -1,0 +1,163 @@
+/*
+
+----- 01 TYPOGRAPHY
+FONT-SIZE SYSTEM : 10px 12px 14px 16px 18px 20px 24px 30px 36px 44px 
+                   52px 62px 74px 86px 98px 
+
+SPACING-SIZE SYSTEM : 2px 4px 8px 12px 16px 24px 32px 48px 64px 80px 
+                      90px 128px 
+
+Line-Height : 1.2;
+
+Letter-Spacing: -1px;
+
+Font-weight : 500 600 700
+
+Border-radius : 12px 
+
+----- 02 COLOR
+Primary color : #087F5B
+Tints color : #218c6b
+Shades Color : #e6f2ef
+Grey Color : rgba(0, 0, 0, 0.7)
+Btn color : #1ab172
+Btn-hover color : #18a76b
+*/
+
+.contents {
+  display: flex;
+  margin: 8rem 12rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.image-section {
+  flex-basis: 85%;
+  display: flex;
+  flex-direction: column;
+  margin-right: 8rem;
+  gap: 4.8rem;
+}
+
+.main-image {
+  align-self: center;
+  justify-self: start;
+  max-width: 70%;
+  max-height: 70%;
+}
+
+.image-text h1 {
+  font-size: 4.4rem;
+}
+
+.image-text p {
+  font-size: 1.4rem;
+}
+
+.input-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+/* กำหนดสี Outline เมื่อกด Tab */
+.input-section *:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.3rem #119b71;
+}
+
+.form-input-part {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+}
+
+.selection-box {
+  position: relative;
+}
+
+.custom-arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  border-radius: 0 0.5rem 0.5rem 0;
+  height: 100%;
+  width: 4rem;
+  pointer-events: none;
+}
+
+.custom-arrow img {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  max-width: 1.8rem;
+  max-height: 1.8rem;
+  opacity: 90%;
+}
+
+select {
+  font-family: "Prompt", sans-serif;
+  position: relative;
+  display: block;
+  font-size: 1.4rem;
+  background-color: #e6f2ef;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.8rem 0 0.8rem 0.8rem;
+  cursor: pointer;
+  appearance: none;
+}
+
+.set-width {
+  width: 100%;
+}
+
+.box-styles {
+  background-color: #e6f2ef;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1.2rem;
+}
+
+.validation-ms {
+  margin-top: 0.8rem;
+  font-size: 1.2rem;
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
+
+.btn-predict {
+  margin-top: 2rem;
+  grid-column: 1/-1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  transition: all 0.5s ease;
+}
+
+.btn-predict img {
+  max-width: 2.8rem;
+  max-height: 2.8rem;
+}
+
+.btn-predict {
+  width: 100%;
+  font-size: 1.6rem;
+  background-color: #087f5b;
+  color: #e6fcf5;
+  border: none;
+  padding: 1.2rem 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-predict:hover,
+.btn-predict:active {
+  gap: 2.4rem;
+  background-color: #218c6b;
+  box-shadow: 0.2rem 0.5rem 0.5rem rgb(33 37 41 / 20%);
+}

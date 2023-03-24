@@ -1,0 +1,252 @@
+{%extends 'base.html'%} {%block header%}
+<script src="{{url_for('static',filename='js/result.js')}}"></script>
+<link
+  rel="stylesheet"
+  href="{{url_for('static',filename='styles/result.css')
+}}"
+  type="text/css"
+/>
+<link
+  rel="stylesheet"
+  href="{{url_for('static',filename='styles/media_queries/result_media_queries.css')
+}}"
+  type="text/css"
+/>
+<title>Stroke-Prediction | ผลลัพธ์ของการทำนาย</title>{%endblock%} {%block
+contents%}
+
+<div class="contents-predicted">
+  <div class="result">
+    {% if prediction_text == 1 %}
+    <h1 class="predicted-1">คุณมีความเสี่ยงต่อการเป็นโรคหลอดเลือดสมอง</h1>
+    {% else %}
+    <h1 class="predicted-0">คุณไม่มีความเสี่ยงต่อการเป็นโรคหลอดเลือดสมอง</h1>
+    {% endif %}
+
+    <div class="info-user">
+      <h2>ข้อมูลของคุณ</h2>
+      <div class="info-user-details">
+        <div class="info-user-detail">
+          <h4 class="number-infor">01</h4>
+          <h4>อายุ {{age}} ปี</h4>
+        </div>
+        <div class="info-user-detail">
+          <h4 class="number-infor">02</h4>
+          <h4>{{heart_disease_text}}</h4>
+        </div>
+        <div class="info-user-detail">
+          <h4 class="number-infor">03</h4>
+          <h4>{{hypertension_text}}</h4>
+        </div>
+        <div class="info-user-detail">
+          <h4 class="number-infor">04</h4>
+          <h4>{{bmi_text}}</h4>
+        </div>
+        <div class="info-user-detail">
+          <h4 class="number-infor">05</h4>
+          <h4>{{avg_glucose_text}}</h4>
+        </div>
+        <div class="info-user-detail">
+          <h4 class="number-infor">06</h4>
+          <h4>{{ever_married_text}}</h4>
+        </div>
+        <div class="info-user-detail">
+          <h4 class="number-infor">07</h4>
+          <h4>{{smoking_status_text}}</h4>
+        </div>
+        <div class="info-user-detail">
+          <h4 class="number-infor">08</h4>
+          <h4>{{work_type_text}}</h4>
+        </div>
+      </div>
+    </div>
+    <img
+      class="img-user"
+      src="/static/images/result_page/doctor.png"
+      alt="รูปภาพแพทย์ประกอบผลการทำนายการเกิดโรคหลอดเลือดสมอง"
+    />
+  </div>
+
+  <div class="button-show-advice">
+    <a class="btn-advice" href="#contents-advice" onclick="myFunction()">
+      การดูแลสุขภาพ
+      <img
+        src="/static/images/result_page/chevron-double-down-free-icon-font.svg"
+        alt="double-down-icon"
+      />
+    </a>
+    <a class="btn-back" href="{{url_for('get_index')}}">
+      กลับหน้าหลัก
+      <img src="/static/images/result_page/house-bold.svg" alt="house-icon" />
+    </a>
+  </div>
+
+  <div class="contents-advice" id="contents-advice" style="display: none">
+    <div class="general">
+      <img
+        src="/static/images/result_page/general_care.jpg"
+        alt="รูปภาพเด็กกำลังยิ้มประกอบคำอธิบายวิธีการดูแลสุขภาพทั่วไป"
+      />
+      <div class="item-text">
+        <h2 class="header-sm">การดูแลร่างกายทั่ว ๆ ไป</h2>
+        <p class="text-sm">&emsp;&emsp;{{general_data[1]}}</p>
+      </div>
+    </div>
+
+    <!--  -->
+
+    {% if hypertension_text == "เป็นโรคความดันโลหิตสูง" and data == 0 %} {% set
+    data = 1 %}
+    <div class="hypertention">
+      <img
+        src="/static/images/result_page/description_hypertension_care.jpg"
+        alt="รูปภาพการทำอาหารเพื่อสุขภาพประกอบคำอธิบายวิธีการดูแลสุขภาพกรณีเป็นโรคความดันโลหิตสูง"
+      />
+      <div class="item-text">
+        <h2 class="header-sm">การดูแลสุขภาพกรณีเป็นโรคความดันโลหิตสูง</h2>
+        <p class="text-sm">&emsp;&emsp;{{hypertension_data[1]}}</p>
+      </div>
+    </div>
+    {% elif hypertension_text == "เป็นโรคความดันโลหิตสูง" and data == 1 %} {%
+    set data = 0 %}
+    <div class="hypertention">
+      <div class="item-text">
+        <h2 class="header-sm">การดูแลสุขภาพกรณีเป็นโรคความดันโลหิตสูง</h2>
+        <p class="text-sm">&emsp;&emsp;{{hypertension_data[1]}}</p>
+      </div>
+      <img
+        src="/static/images/result_page/description_hypertension_care.jpg"
+        alt="รูปภาพการทำอาหารเพื่อสุขภาพประกอบคำอธิบายวิธีการดูแลสุขภาพกรณีเป็นโรคความดันโลหิตสูง"
+      />
+    </div>
+    {% endif %}
+
+    <!--  -->
+
+    {% if heart_disease_text == "เป็นโรคหัวใจ" and data==0 %} {% set data = 1 %}
+    <div class="heart-disease">
+      <img
+        src="/static/images/result_page/describtion_heart_disease_care.jpg"
+        alt="รูปภาพการรักษาผู้ป่วยหญิงประกอบคำอธิบายวิธีการดูแลสุขภาพกรณีเป็นโรคหัวใจ"
+      />
+      <div class="item-text">
+        <h2 class="header-sm">การดูแลสุขภาพกรณีเป็นโรคหัวใจ</h2>
+        <p class="text-sm">&emsp;&emsp;{{heart_disease_data[1]}}</p>
+      </div>
+    </div>
+    {% elif heart_disease_text == "เป็นโรคหัวใจ" and data==1 %} {% set data = 0
+    %}
+    <div class="heart-disease">
+      <div class="item-text">
+        <h2 class="header-sm">การดูแลสุขภาพกรณีเป็นโรคหัวใจ</h2>
+        <p class="text-sm">&emsp;&emsp;{{heart_disease_data[1]}}</p>
+      </div>
+      <img
+        src="/static/images/result_page/describtion_heart_disease_care.jpg"
+        alt="รูปภาพการรักษาผู้ป่วยหญิงประกอบคำอธิบายวิธีการดูแลสุขภาพกรณีเป็นโรคหัวใจ"
+      />
+    </div>
+    {% endif %}
+
+    <!--  -->
+
+    {% if (bmi < 18.5) and data == 0 %} {% set data = 1 %}
+    <div class="glucose-bef-diabetes">
+      <img
+        src="/static/images/result_page/description_bmi_low_care.png"
+        alt="รูปภาพอาหารเพื่อสุขภาพประกอบคำอธิบายวิธีการดูแลสุขภาพกรณีค่าดัชนีมวลกายต่ำกว่าเกณฑ์"
+      />
+      <div class="item-text">
+        <h2 class="header-sm">การดูแลสุขภาพกรณีค่าดัชนีมวลกกายต่ำกว่าเกณฑ์</h2>
+        <p class="text-sm">&emsp;&emsp;{{bmi_data[1]}}</p>
+      </div>
+    </div>
+    {% elif (bmi < 18.5) and data == 1 %} {% set data = 0 %}
+    <div class="glucose-bef-diabetes">
+      <div class="item-text">
+        <h2 class="header-sm">การดูแลสุขภาพกรณีค่าดัชนีมวลกายต่ำกว่าเกณฑ์</h2>
+        <p class="text-sm">&emsp;&emsp;{{bmi_data[1]}}</p>
+      </div>
+      <img
+        src="/static/images/result_page/description_bmi_low_care.png"
+        alt="รูปภาพอาหารเพื่อสุขภาพประกอบคำอธิบายวิธีการดูแลสุขภาพกรณีค่าดัชนีมวลกายต่ำกว่าเกณฑ์"
+      />
+    </div>
+    {% elif (bmi >= 25.0) and data == 0 %} {% set data = 1 %}
+    <div class="glucose-diabetes">
+      <img
+        src="/static/images/result_page/description_bmi_hight_care.jpg"
+        alt="รูปภาพการออกกำลังกายประกอบคำอธิบายวิธีการดูแลสุขภาพกรณีค่าดัชนีมวลกายสูงกว่าเกณฑ์"
+      />
+      <div class="item-text">
+        <h2 class="header-sm">การดูแลสุขภาพกรณีค่าดัชนีมวลกายสูงกว่าเกณฑ์</h2>
+        <p class="text-sm">&emsp;&emsp;{{bmi_data[1]}}</p>
+      </div>
+    </div>
+    {% elif (bmi >= 25.0) and data == 1 %} {% set data = 0 %}
+    <div class="glucose-diabetes">
+      <div class="item-text">
+        <h2 class="header-sm">การดูแลสุขภาพกรณีค่าดัชนีมวลกายสูงกว่าเกณฑ์</h2>
+        <p class="text-sm">&emsp;&emsp;{{bmi_data[1]}}</p>
+      </div>
+      <img
+        src="/static/images/result_page/description_bmi_hight_care.jpg"
+        alt="รูปภาพการออกกำลังกายประกอบคำอธิบายวิธีการดูแลสุขภาพกรณีค่าดัชนีมวลกายสูงกว่าเกณฑ์"
+      />
+    </div>
+    {% endif %}
+
+    <!--  -->
+
+    {% if ((glucose>= 100) and (glucose<= 125)) and data == 0 %} {% set data = 1
+    %}
+    <div class="glucose-bef-diabetes">
+      <img
+        src="/static/images/result_page/description_risk_diabetes_care.jpeg"
+        alt="รูปภาพการตรวจวัดระดับน้ำตาลในเลือดกายประกอบคำอธิบายวิธีการดูแลสุขภาพกรณีเสี่ยงเป็นโรคเบาหวาน"
+      />
+      <div class="item-text">
+        <h2 class="header-sm">การดูแลสุขภาพกรณีเสี่ยงเป็นโรคเบาหวาน</h2>
+        <p class="text-sm">&emsp;&emsp;{{avg_glucose_data[1]}}</p>
+      </div>
+    </div>
+    {% elif ((glucose>= 100) and (glucose<= 125)) and data == 1 %} {% set data =
+    0 %}
+    <div class="glucose-bef-diabetes">
+      <div class="item-text">
+        <h2 class="header-sm">การดูแลสุขภาพกรณีเสี่ยงเป็นโรคเบาหวาน</h2>
+        <p class="text-sm">&emsp;&emsp;{{avg_glucose_data[1]}}</p>
+      </div>
+      <img
+        src="/static/images/result_page/description_risk_diabetes_care.jpeg"
+        alt="รูปภาพการตรวจวัดระดับน้ำตาลในเลือดกายประกอบคำอธิบายวิธีการดูแลสุขภาพกรณีเสี่ยงเป็นโรคเบาหวาน"
+      />
+    </div>
+    {% elif (glucose >= 126) and data == 0 %} {% set data = 1 %}
+    <div class="glucose-diabetes">
+      <img
+        src="/static/images/result_page/description_diabetes_care.jpg"
+        alt="รูปภาพแพทย์กำลังรักษาผู้ป่วยประกอบคำอธิบายวิธีการดูแลสุขภาพกรณีเป็นโรคเบาหวาน"
+      />
+      <div class="item-text">
+        <h2 class="header-sm">การดูแลสุขภาพกรณีเป็นโรคเบาหวาน</h2>
+        <p class="text-sm">&emsp;&emsp;{{avg_glucose_data[1]}}</p>
+      </div>
+    </div>
+    {% elif (glucose >= 126) and data == 1 %} {% set data = 0 %}
+    <div class="glucose-diabetes">
+      <div class="item-text">
+        <h2 class="header-sm">การดูแลสุขภาพกรณีเป็นโรคเบาหวาน</h2>
+        <p class="text-sm">&emsp;&emsp;{{avg_glucose_data[1]}}</p>
+      </div>
+      <img
+        src="/static/images/result_page/description_diabetes_care.jpg"
+        alt="รูปภาพแพทย์กำลังรักษาผู้ป่วยประกอบคำอธิบายวิธีการดูแลสุขภาพกรณีเป็นโรคเบาหวาน"
+      />
+    </div>
+    {% endif %}
+
+    <!--  -->
+  </div>
+</div>
+{%endblock%}
